@@ -64,6 +64,17 @@ namespace WPF_Calculator_Homework {
                         secondoperand = number.Content.ToString();
                 }
                 else {
+                    if (isOperation) {
+                        if (command == "+" || command == "-" || command == "x" || command == "÷") {
+                            secondoperand = number.Content.ToString();
+                            string? op = (operation.Content.ToString()[operation.Content.ToString().Length - 2]).ToString();
+                            if (op == "x") op = "*";
+                            else if (op == "÷") op = "/";
+                            double result = EvaluateExpression(firstoperand + op + secondoperand);
+                            number.Content = firstoperand = result.ToString();
+                            secondoperand = null;
+                        }
+                    }
                     _operator = command;
                     operate();
                 } 
@@ -75,11 +86,34 @@ namespace WPF_Calculator_Homework {
                 isOperation = true;
                 operation.Content = firstoperand + " " + _operator + " ";
             }
+            else if (_operator == ",") {
+                if (!number.Content.ToString().Contains(",")) number.Content += ",";
+            }
             else if (_operator == "C") {
                 operation.Content = "";
                 number.Content = "0";
                 firstoperand = secondoperand = _operator = null;
                 isOperation = false;
+            }
+            else if (_operator == "CE") { 
+                if (isOperation) {
+                    number.Content = "0";
+                }
+            }
+            else if (_operator == "⌫") {
+                if (number.Content.ToString().Length > 1) {
+                    number.Content = number.Content.ToString().Substring(0, number.Content.ToString().Length - 1);
+                }else number.Content = 0;
+            }
+            else if (_operator == "√x") {
+                double result = Math.Sqrt(double.Parse(firstoperand));
+                operation.Content = $"√({firstoperand})";
+                number.Content = firstoperand = result.ToString();
+            }
+            else if (_operator == "x²") {
+                double result = double.Parse(firstoperand) * double.Parse(firstoperand);
+                operation.Content = $"sqr({firstoperand})";
+                number.Content = firstoperand = result.ToString();
             }
         }
 
@@ -88,19 +122,28 @@ namespace WPF_Calculator_Homework {
             border!.Background = new SolidColorBrush() {
                 Color = Color.FromRgb((byte)204, (byte)71, (byte)65)
             };
-            operation.Content += secondoperand + " =";
-            double result = EvaluateExpression(firstoperand + _operator + secondoperand);
-            number.Content = result.ToString();
-            isOperation = false;
+
+            if (isOperation) {
+                secondoperand = number.Content.ToString();  
+                string? op = (operation.Content.ToString()[operation.Content.ToString().Length - 2]).ToString();
+                if (op == "x") op = "*";
+                else if (op == "÷") op = "/";
+                double result = EvaluateExpression(firstoperand + op + secondoperand);
+                operation.Content += secondoperand + " =";
+
+                number.Content = firstoperand  = result.ToString();
+                isOperation = false;
+            }else operation.Content = number.Content + " =";
         }
 
-        public static double EvaluateExpression(string expression) {
+        public double EvaluateExpression(string expression) {
+            double result = double.Parse(number.Content.ToString());
             DataTable table = new DataTable();
+            expression = expression.Replace(',', '.');
             table.Columns.Add("expression", typeof(string), expression);
             DataRow row = table.NewRow();
             table.Rows.Add(row);
-
-            double result = double.Parse((string)row["expression"]);
+            result = double.Parse((string)row["expression"]);
             return result;
         }
     }

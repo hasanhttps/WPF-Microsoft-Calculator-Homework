@@ -149,7 +149,7 @@
             </Border>
 
             <Border x:Name="multiplybt" Grid.Column="3" Grid.Row="2" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="X" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="x" FontSize="24" FontWeight="Thin"/>
             </Border>
 
             <Border x:Name="fourbt" Grid.Column="0" Grid.Row="3" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
