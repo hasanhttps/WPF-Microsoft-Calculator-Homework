@@ -1,0 +1,204 @@
+﻿<Window x:Class="WPF_Calculator_Homework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Calculator_Homework"
+        mc:Ignorable="d"
+        Title="Calculator" Height="610" Width="360"
+        Background="#F9F0F4">
+    <Grid Margin="3,0,3,3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="183*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="114*"/>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="107*"/>
+                <ColumnDefinition Width="44*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <Viewbox Margin="10,10,10,10">
+                    <Image Source="{StaticResource Menu}"></Image>
+                </Viewbox>
+            </Button>
+
+            <Label Content="Standard" Margin="0,12,10,-1" FontSize="18" FontWeight="Medium" Grid.Column="1"/>
+
+            <Button Grid.Column="4" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <Viewbox Margin="6,6,6,6">
+                    <Image Source="{StaticResource History}"></Image>
+                </Viewbox>
+            </Button>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="13*"/>
+                <RowDefinition Height="29*"/>
+            </Grid.RowDefinitions>
+
+
+            <Label Grid.Row="0" Name="operation" Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="#787476" FontSize="13" Margin="0,0,5,0"/>
+            <Label Grid.Row="1" Name="number" Content="0" FontSize="45" FontWeight="Medium" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="MC" Foreground="#9B9B9B" HorizontalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="1" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="MR" Foreground="#9B9B9B" HorizontalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="2" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="M+" Foreground="#1A1A1A" HorizontalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="3" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="M-" Foreground="#1A1A1A" HorizontalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="4" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="MS" Foreground="#1A1A1A" HorizontalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="5" Background="Transparent" Margin="0,12,0,0" BorderThickness="0">
+                <TextBlock Text="M" Foreground="#9B9B9B" HorizontalAlignment="Center"/>
+            </Border>
+
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,1,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="percentbt" Grid.Column="0" Grid.Row="0" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,0,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="%" FontSize="15"/>
+            </Border>
+
+            <Border x:Name="cebt" Grid.Column="1" Grid.Row="0" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,0,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="CE" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="cbt" Grid.Column="2" Grid.Row="0" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,0,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="C" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="deletebt" Grid.Column="3" Grid.Row="0" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,0,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="⌫" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="onedividexbt" Grid.Column="0" Grid.Row="1" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="⅟𝓍" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="squarexbt" Grid.Column="1" Grid.Row="1" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="x²" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="rootxbt" Grid.Column="2" Grid.Row="1" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="√x" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="dividebt" Grid.Column="3" Grid.Row="1" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="÷" FontSize="24"/>
+            </Border>
+
+            <Border x:Name="sevenbt" Grid.Column="0" Grid.Row="2" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="7" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="eightbt" Grid.Column="1" Grid.Row="2" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="8" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="ninebt" Grid.Column="2" Grid.Row="2" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="9" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="multiplybt" Grid.Column="3" Grid.Row="2" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="X" FontSize="14"/>
+            </Border>
+
+            <Border x:Name="fourbt" Grid.Column="0" Grid.Row="3" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="4" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="fivebt" Grid.Column="1" Grid.Row="3" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="5" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="sixbt" Grid.Column="2" Grid.Row="3" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="6" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="substractbt" Grid.Column="3" Grid.Row="3" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="-" FontSize="40" FontWeight="UltraLight"/>
+            </Border>
+
+            <Border x:Name="onebt" Grid.Column="0" Grid.Row="4" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="1" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="twobt" Grid.Column="1" Grid.Row="4" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="threebt" Grid.Column="2" Grid.Row="4" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="3" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="addbt" Grid.Column="3" Grid.Row="4" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="#FAF7FC" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="+" FontSize="28" FontWeight="UltraLight"/>
+            </Border>
+
+            <Border x:Name="plusminusbt" Grid.Column="0" Grid.Row="5" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="±" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="zerobt" Grid.Column="1" Grid.Row="5" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="0" FontSize="18"/>
+            </Border>
+
+            <Border x:Name="dottbt" Grid.Column="2" Grid.Row="5" BorderBrush="#CCCBCE" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp" Background="White" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="," FontSize="20"/>
+            </Border>
+
+            <Border x:Name="equalbt" Grid.Column="3" Grid.Row="5" BorderBrush="#C21C14" BorderThickness="1" CornerRadius="5" MouseLeave="Border_MouseLeave" MouseMove="Border_GotFocus" MouseDown="EqualBorder_MouseDown" MouseUp="Border_MouseUp" Background="#C21C14" Margin="1,1,1,1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="=" Foreground="White" FontSize="30" FontWeight="Thin"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
